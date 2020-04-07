@@ -25,7 +25,7 @@ O（nlogn）, O（n^3）, O（m*n），O（2^n），O（n！）
 
 # 二、算法
 ## 冒泡排序bubblesort
-https://github.com/kelvinliu11/meteor/blob/master/bubblesort/readme.md
+https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 冒泡排序  
     * 冒泡排序，每次比较都是从0号元素开始，一次比较0-1,1-2,2-3...，一次循环结束，最大的元素放在n-1号最大的位置。
     * 下一次比较也是从0号元素开始，只是最大的元素已经在n-1位置，那么n-1位置不需要参与循环比较
@@ -40,14 +40,14 @@ https://github.com/kelvinliu11/meteor/blob/master/bubblesort/readme.md
 
     
 ## 选择排序bubblesort
-https://github.com/kelvinliu11/meteor/blob/master/bubblesort/readme.md
+https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 选择排序  
     * 选择排序，由小到大输出：每次都是从底最后一个，跟其上面的所有数据做比较，每次比较过程中，用minIndex来记录这一轮最小数的下标，待结束后放在较小的存在0号位置。
     * 注意的就是不要没一个比较的时候直接交换，只记录下标，等到内层循环结束之后再做交换
     * 总共比较的次数是一定的：(n-1)+(n-2)+...+1 = (n-1)*n/2 = 1/2*n² - 1/2*n，那么时间复杂度为O(n²)
 
 ## 插入排序bubblesort
-https://github.com/kelvinliu11/meteor/blob/master/bubblesort/readme.md
+https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 插入排序
     * 插入排序：让元素i之前的元素都保持由小到大排序，每次比较都是跟当前元素之前的所有元素进行比较。好比从牌堆里面摸牌，摸出来的牌每次都要从手上的牌从后往前理一遍。
     * 思路是从下标1元素开始，跟之前的所有元素比较，如果当前元素比前一个元素小，那么就进行交换。这样，每一轮下来，位置i的元素会被安排到合适的位置。
@@ -73,7 +73,7 @@ https://github.com/kelvinliu11/meteor/blob/master/littlesum/readme.md
     * 将[left,right]分成2个子列->[left,right/2],[right/2+1,right]，将第二个子列从right/2+1开始，逐一和第一个子列的元素进行比较，如果左侧比右侧元素小，则累加到tmpSum中
 
 ## 快速排序quicksort
-https://github.com/kelvinliu11/meteor/blob/master/quicksort/readme.md
+https://github.com/kelvinliu11/meteor/blob/master/quicksort
  * 快速排序的思想：
      * 快速排序是将分治法运用到排序问题中的一个典型例子，其基本思想是：
      * 通过一个枢轴（pivot）元素将 n 个元素的序列分为左、右两个子序列 Ll 和 Lr，其中子序列 Ll中的元素均比枢轴元素小，而子序列 Lr 中的元素均比枢轴元素大，
@@ -91,7 +91,7 @@ https://github.com/kelvinliu11/meteor/blob/master/quicksort/readme.md
  
  
 ## 荷兰国旗问题hollandflagproblem
-https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem/readme.md
+https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
 * 题设
     * 假定就是一堆0,1,2的数字散列在数组中，要求排序后，按照0,1,2的顺序排列。
 * 思路
