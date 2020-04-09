@@ -22,6 +22,13 @@ T（n） =  O（n^2）
 O（1）< O（logn）< O（n）< O（n^2）  
 在编程的世界中有着各种各样的算法，除了上述的四个场景，还有许多不同形式的时间复杂度，比如：  
 O（nlogn）, O（n^3）, O（m*n），O（2^n），O（n！）  
+## (二) 二叉树
+* 满二叉树  
+一棵二叉树的结点要么是叶子结点，要么它有两个子结点（如果一个二叉树的层数为K，且结点总数是(2^k) -1，则它就是满二叉树。）   
+![](.readme_images/满二叉树.png)
+* 完全二叉树  
+若设二叉树的深度为k，除第 k 层外，其它各层 (1～k-1) 的结点数都达到最大个数，第k 层所有的结点都连续集中在最左边，这就是完全二叉树。  
+![](.readme_images/完全二叉树.png)
 
 # 二、算法
 ## 冒泡排序bubblesort
@@ -101,3 +108,17 @@ https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
     * current继续前移，当current为2的时候，将current和end所指的元素交换。交换后，current不动，end--
 * 参考文档
     * https://www.cnblogs.com/liuzhen1995/p/6439429.html
+    
+ ## 堆排序heapsort
+ https://github.com/kelvinliu11/meteor/blob/master/heapsort
+ * 题设
+     * 完全二叉树概念。
+     * 堆概念，大顶堆、小顶堆。
+ * 思路  
+     * 将无需序列构建成一个堆，根据升序降序需求选择大顶堆或小顶堆;  
+     * 将堆顶元素与末尾元素交换，将最大元素"沉"到数组末端;  
+     * 重新调整结构，使其满足堆定义，然后继续交换堆顶元素与当前末尾元素，反复执行调整+交换步骤，直到整个序列有序。
+ * 参考文档
+     * https://blog.csdn.net/qq_36186690/article/details/82505569
+ 
+ ![](./heapsort/.readme_images/堆排序.png)
