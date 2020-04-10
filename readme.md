@@ -1,4 +1,20 @@
-[TOC]
+# Table of Contents
+
+* 1 [一、概念](#一概念)
+  * 1.1 [（一）渐进时间复杂度（asymptotic time complexity）](#一渐进时间复杂度asymptotic-time-complexity)
+  * 1.2 [(二) 二叉树](#二-二叉树)
+  * 1.3 [排序算法的稳定性](#排序算法的稳定性)
+* 2 [二、算法](#二算法)
+  * 2.1 [冒泡排序bubblesort](#冒泡排序bubblesort)
+  * 2.2 [选择排序bubblesort](#选择排序bubblesort)
+  * 2.3 [插入排序bubblesort](#插入排序bubblesort)
+  * 2.4 [小和问题littlesum](#小和问题littlesum)
+  * 2.5 [快速排序quicksort](#快速排序quicksort)
+  * 2.6 [荷兰国旗问题hollandflagproblem](#荷兰国旗问题hollandflagproblem)
+  * 2.7 [堆排序heapsort](#堆排序heapsort)
+
+
+
 
 
 
@@ -131,7 +147,6 @@ https://github.com/kelvinliu11/meteor/blob/master/quicksort
 
  下图是一次循环的过程
  ![](./quicksort/.readme_images/7a23cbb7.png)
-
 
 ## 荷兰国旗问题hollandflagproblem
 https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
