@@ -1,11 +1,17 @@
-@[TOC]
+[TOC]
+
+
+
+
 
 # 一、概念
+
 ## （一）渐进时间复杂度（asymptotic time complexity）
 官方的定义如下：  
 若存在函数 f（n），使得当n趋近于无穷大时，T（n）/ f（n）的极限值为不等于零的常数，则称 f（n）是T（n）的同数量级函数。
 记作 T（n）= O（f（n）），称O（f（n）） 为算法的渐进时间复杂度，简称时间复杂度。
 渐进时间复杂度用大写O来表示，所以也被称为大O表示法。  
+
 * T（n） = 3n   
 最高阶项为3n，省去系数3，转化的时间复杂度为：  
 T（n） =  O（n）
@@ -116,17 +122,17 @@ https://github.com/kelvinliu11/meteor/blob/master/quicksort
      * 通过一个枢轴（pivot）元素将 n 个元素的序列分为左、右两个子序列 Ll 和 Lr，其中子序列 Ll中的元素均比枢轴元素小，而子序列 Lr 中的元素均比枢轴元素大，
      * 然后对左、右子序列分别进行快速排序，在将左、右子序列排好序后，则整个序列有序，
      * 而对左右子序列的排序过程直到子序列中只包含一个元素时结束，此时左、右子序列由于只包含一个元素则自然有序。
- 
+
  * 对待排序序列进行划分（一次循环的过程）：
      * 使用两个指针 low 和 high 分别指向待划分序列 r 的范围，取 low 所指元素为枢轴，即 pivot = r[low]。
      * 划分首先从 high 所指位置的元素起向前逐一搜索到第一个比 pivot 小的元素，并将其设置到 low 所指的位置；
      * 然后从 low 所指位置的元素起向后逐一搜索到第一个比 pivot 大的元素，并将其设置到 high 所指的位置；
      * 不断重复上述两步直到 low = high 为止，最后将 pivot 设置到 low 与 high 共同指向的位置。
- 
+
  下图是一次循环的过程
  ![](./quicksort/.readme_images/7a23cbb7.png)
- 
- 
+
+
 ## 荷兰国旗问题hollandflagproblem
 https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
 * 题设
@@ -150,5 +156,5 @@ https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
      * 重新调整结构，使其满足堆定义，然后继续交换堆顶元素与当前末尾元素，反复执行调整+交换步骤，直到整个序列有序。
  * 参考文档
      * https://blog.csdn.net/qq_36186690/article/details/82505569
- 
+
  ![](./heapsort/.readme_images/堆排序.png)
