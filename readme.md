@@ -1,28 +1,23 @@
-# Table of Contents
+<!-- TOC -->
 
-* 1 [一、概念](#一概念)
-  * 1.1 [（一）渐进时间复杂度（asymptotic time complexity）](#一渐进时间复杂度asymptotic-time-complexity)
-  * 1.2 [(二) 二叉树](#二-二叉树)
-  * 1.3 [排序算法的稳定性](#排序算法的稳定性)
-* 2 [二、算法](#二算法)
-  * 2.1 [冒泡排序bubblesort](#冒泡排序bubblesort)
-  * 2.2 [选择排序bubblesort](#选择排序bubblesort)
-  * 2.3 [插入排序bubblesort](#插入排序bubblesort)
-  * 2.4 [小和问题littlesum](#小和问题littlesum)
-  * 2.5 [快速排序quicksort](#快速排序quicksort)
-  * 2.6 [荷兰国旗问题hollandflagproblem](#荷兰国旗问题hollandflagproblem)
-  * 2.7 [堆排序heapsort](#堆排序heapsort)
+- [1. 概念](#1-概念)
+    - [1.1. 渐进时间复杂度（asymptotic time complexity）](#11-渐进时间复杂度asymptotic-time-complexity)
+    - [1.2. 二叉树](#12-二叉树)
+    - [1.3. 排序算法的稳定性](#13-排序算法的稳定性)
+- [2. 算法](#2-算法)
+    - [2.1. 冒泡排序bubblesort](#21-冒泡排序bubblesort)
+    - [2.2. 选择排序bubblesort](#22-选择排序bubblesort)
+    - [2.3. 插入排序bubblesort](#23-插入排序bubblesort)
+    - [2.4. 小和问题littlesum](#24-小和问题littlesum)
+    - [2.5. 快速排序quicksort](#25-快速排序quicksort)
+    - [2.6. 荷兰国旗问题hollandflagproblem](#26-荷兰国旗问题hollandflagproblem)
 
-
-
+<!-- /TOC -->
 
 
+# 1. 概念
 
-
-
-# 一、概念
-
-## （一）渐进时间复杂度（asymptotic time complexity）
+## 1.1. 渐进时间复杂度（asymptotic time complexity）
 官方的定义如下：  
 若存在函数 f（n），使得当n趋近于无穷大时，T（n）/ f（n）的极限值为不等于零的常数，则称 f（n）是T（n）的同数量级函数。
 记作 T（n）= O（f（n）），称O（f（n）） 为算法的渐进时间复杂度，简称时间复杂度。
@@ -44,14 +39,14 @@ T（n） =  O（n^2）
 O（1）< O（logn）< O（n）< O（n^2）  
 在编程的世界中有着各种各样的算法，除了上述的四个场景，还有许多不同形式的时间复杂度，比如：  
 O（nlogn）, O（n^3）, O（m*n），O（2^n），O（n！）  
-## (二) 二叉树
+## 1.2. 二叉树
 * 满二叉树  
 一棵二叉树的结点要么是叶子结点，要么它有两个子结点（如果一个二叉树的层数为K，且结点总数是(2^k) -1，则它就是满二叉树。）   
 ![](.readme_images/满二叉树.png)
 * 完全二叉树  
 若设二叉树的深度为k，除第 k 层外，其它各层 (1～k-1) 的结点数都达到最大个数，第k 层所有的结点都连续集中在最左边，这就是完全二叉树。  
 ![](.readme_images/完全二叉树.png)
-## 排序算法的稳定性
+## 1.3. 排序算法的稳定性
 * 冒泡排序  
 冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。
 * 选择排序  
@@ -82,8 +77,8 @@ O（nlogn）, O（n^3）, O（m*n），O（2^n），O（n！）
 ![](.readme_images/排序算法的稳定性.png)
 又可以参考：https://blog.csdn.net/qq_43152052/article/details/100078825
 
-# 二、算法
-## 冒泡排序bubblesort
+# 2. 算法
+## 2.1. 冒泡排序bubblesort
 https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 冒泡排序  
     * 冒泡排序，每次比较都是从0号元素开始，一次比较0-1,1-2,2-3...，一次循环结束，最大的元素放在n-1号最大的位置。
@@ -98,14 +93,14 @@ https://github.com/kelvinliu11/meteor/blob/master/bubblesort
     * 待pLeft=middle&&pRight=right，表明merge结束，此时需要将newArray中的数据拷贝到origin中的left ~ right下标段处。
 
     
-## 选择排序bubblesort
+## 2.2. 选择排序bubblesort
 https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 选择排序  
     * 选择排序，由小到大输出：每次都是从底最后一个，跟其上面的所有数据做比较，每次比较过程中，用minIndex来记录这一轮最小数的下标，待结束后放在较小的存在0号位置。
     * 注意的就是不要没一个比较的时候直接交换，只记录下标，等到内层循环结束之后再做交换
     * 总共比较的次数是一定的：(n-1)+(n-2)+...+1 = (n-1)*n/2 = 1/2*n² - 1/2*n，那么时间复杂度为O(n²)
 
-## 插入排序bubblesort
+## 2.3. 插入排序bubblesort
 https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 插入排序
     * 插入排序：让元素i之前的元素都保持由小到大排序，每次比较都是跟当前元素之前的所有元素进行比较。好比从牌堆里面摸牌，摸出来的牌每次都要从手上的牌从后往前理一遍。
@@ -114,7 +109,7 @@ https://github.com/kelvinliu11/meteor/blob/master/bubblesort
     * 图形化的演示http://cmsblogs.com/?p=4688    
     * 总共比较的次数是不定的：最多是(n-1)+(n-2)+...+1 = (n-1)*n/2 = 1/2*n² - 1/2*n，那么最大的时间复杂度为O(n²)；最少是n-1次，最小的时间复杂度是O(n)
 
-## 小和问题littlesum
+## 2.4. 小和问题littlesum
 https://github.com/kelvinliu11/meteor/blob/master/littlesum/readme.md
 * 小和问题
 在一个数组中， 每一个数左边比当前数小的数累加起来， 叫做这个数组的小和。 求一个数组
@@ -131,7 +126,7 @@ https://github.com/kelvinliu11/meteor/blob/master/littlesum/readme.md
     * 递归调用，主要的逻辑就是把数组拆分成2个子列，分别对子列进行小和计算，并且把子列小和计算的结果进行累加   
     * 将[left,right]分成2个子列->[left,right/2],[right/2+1,right]，将第二个子列从right/2+1开始，逐一和第一个子列的元素进行比较，如果左侧比右侧元素小，则累加到tmpSum中
 
-## 快速排序quicksort
+## 2.5. 快速排序quicksort
 https://github.com/kelvinliu11/meteor/blob/master/quicksort
  * 快速排序的思想：
      * 快速排序是将分治法运用到排序问题中的一个典型例子，其基本思想是：
@@ -148,7 +143,7 @@ https://github.com/kelvinliu11/meteor/blob/master/quicksort
  下图是一次循环的过程
  ![](./quicksort/.readme_images/7a23cbb7.png)
 
-## 荷兰国旗问题hollandflagproblem
+## 2.6. 荷兰国旗问题hollandflagproblem
 https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
 * 题设
     * 假定就是一堆0,1,2的数字散列在数组中，要求排序后，按照0,1,2的顺序排列。
