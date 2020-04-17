@@ -11,6 +11,8 @@
     - [2.4. 小和问题littlesum](#24-小和问题littlesum)
     - [2.5. 快速排序quicksort](#25-快速排序quicksort)
     - [2.6. 荷兰国旗问题hollandflagproblem](#26-荷兰国旗问题hollandflagproblem)
+- [3. 常用工具代码](#3-常用工具代码)
+    - [3.1. 比较器](#31-比较器)
 
 <!-- /TOC -->
 
@@ -42,7 +44,6 @@ O（nlogn）, O（n^3）, O（m*n），O（2^n），O（n！）
 ## 1.2. 二叉树
 * 满二叉树  
 一棵二叉树的结点要么是叶子结点，要么它有两个子结点（如果一个二叉树的层数为K，且结点总数是(2^k) -1，则它就是满二叉树。）   
-![](.readme_images/满二叉树.png)
 ![](.readme_images/满二叉树.png)
 * 完全二叉树  
 若设二叉树的深度为k，除第 k 层外，其它各层 (1～k-1) 的结点数都达到最大个数，第k 层所有的结点都连续集中在最左边，这就是完全二叉树。  
@@ -169,3 +170,11 @@ https://github.com/kelvinliu11/meteor/blob/master/hollandflagproblem
      * https://blog.csdn.net/qq_36186690/article/details/82505569
 
  ![](./heapsort/.readme_images/堆排序.png)
+
+# 3. 常用工具代码
+## 3.1. 比较器
+* 一般可以分为内部比较器和外部比较器。
+    * 内部比较器comparable接口。为什么叫内部比较器是因为待比较的类要实现这个接口，对于代码有一定的侵入性。
+    * 外部比较器comparator接口。为什么叫外部比较器是因为待比较的类无需实现此接口，对于代码无侵入性。
+    * 内置比较器通过Collections.sort(List list)为列表排序；外置比较器通过Collections.sort(List list, Comparator c)为列表排序
+
