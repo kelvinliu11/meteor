@@ -23,6 +23,7 @@
         - [4.3.10. 如何创建一个快捷方式？](#4310-如何创建一个快捷方式)
         - [4.3.11. 如何快速的找到定义的Class？](#4311-如何快速的找到定义的class)
         - [4.3.12. 不能在2个快捷方式之间连线，除非就是简单的Link](#4312-不能在2个快捷方式之间连线除非就是简单的link)
+        - [4.3.13. *、0..1、1..1等的含义](#4313-0111等的含义)
 - [5. 类图生成Java代码](#5-类图生成java代码)
 - [6. Java代码生成类图](#6-java代码生成类图)
 
@@ -158,6 +159,17 @@ tips：
 ![](.readme_images/简单的Link.png)
 Link的效果  
 ![](.readme_images/Link的效果.png)
+
+### 4.3.13. *、0..1、1..1等的含义
+![](.readme_images/数量关系.png)
+怎么调整数量关系？双击连线进行修改  
+![](.readme_images/调整数量关系.png)
+![](.readme_images/数量关系2.png)
+![](.readme_images/数量关系3.png)
+![](.readme_images/数量关系4.png)
+以上可以看出，如果在Department处是0..*或者1..*，那么在Company中的Department属性就是数组  
+如果在Department处是0..1或者1..1，那么在Company中的Department属性就是单元素属性  
+所以：一般情况下，要修改成1..1  
 
 # 5. 类图生成Java代码
 ![](.readme_images/类图生成Java代码1.png)
