@@ -13,6 +13,8 @@
     - [2.6. 荷兰国旗问题hollandflagproblem](#26-荷兰国旗问题hollandflagproblem)
 - [3. 常用工具代码](#3-常用工具代码)
     - [3.1. 比较器](#31-比较器)
+- [4. 工具使用](#4-工具使用)
+    - [4.1. 从0开始Powerdesign类图](#41-从0开始powerdesign类图)
 
 <!-- /TOC -->
 
@@ -179,3 +181,6 @@ https://github.com/kelvinliu11/meteor/blob/master/compare
     * 外部比较器comparator接口。为什么叫外部比较器是因为待比较的类无需实现此接口，对于代码无侵入性。
     * 内置比较器通过Collections.sort(List list)为列表排序；外置比较器通过Collections.sort(List list, Comparator c)为列表排序
 
+# 4. 工具使用
+## 4.1. 从0开始Powerdesign类图
+https://github.com/kelvinliu11/meteor/blob/master/从0开始Powerdesign类图
