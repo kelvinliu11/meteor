@@ -33,6 +33,7 @@
 # 1. 为什么要画类图？
 有了它整个项目的类结构更加清晰,或者说一个刚入职进入项目组的成员能更快的了解整个项目。  
 当一个新的项目产生，类图可以从宏观上体现领域模型。  
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200429164932276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NkZmlpaWlpaQ==,size_16,color_FFFFFF,t_70)
 # 2. 环境准备
 使用的是powerdesign15.5版本，自行百度下载安装
 
@@ -184,5 +185,5 @@ Link的效果
 ![](.readme_images/可见已经生成Java类图.png)  
 * 如果是想把整个目录下的Java代码生成类图，那么这么操作：    
 ![](.readme_images/整个目录生成Java类图.png)
-![](.readme_images/可见目录已经生成Java类图2.png)
+![](.readme_images/可见目录已经生成Java类图2.png)  
 生成的图会比较细致（其实就是乱），需要自行调整
