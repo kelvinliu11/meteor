@@ -33,7 +33,6 @@
 # 1. 为什么要画类图？
 有了它整个项目的类结构更加清晰,或者说一个刚入职进入项目组的成员能更快的了解整个项目。  
 当一个新的项目产生，类图可以从宏观上体现领域模型。  
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200429164932276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NkZmlpaWlpaQ==,size_16,color_FFFFFF,t_70)
 # 2. 环境准备
 使用的是powerdesign15.5版本，自行百度下载安装
 
