@@ -15,6 +15,10 @@
     - [3.1. 比较器](#31-比较器)
 - [4. 工具使用](#4-工具使用)
     - [4.1. 从0开始Powerdesign类图](#41-从0开始powerdesign类图)
+- [5. 项目管理](#5-项目管理)
+    - [5.1. 项目管理Project](#51-项目管理project)
+- [6. 源码类](#6-源码类)
+    - [6.1. Mybatis源码学习](#61-mybatis源码学习)
 
 <!-- /TOC -->
 
@@ -185,10 +189,10 @@ https://github.com/kelvinliu11/meteor/blob/master/compare
 ## 4.1. 从0开始Powerdesign类图
 https://github.com/kelvinliu11/meteor/blob/master/从0开始Powerdesign类图
 
-# 项目管理
-## 项目管理Project
+# 5. 项目管理
+## 5.1. 项目管理Project
 https://github.com/kelvinliu11/meteor/blob/master/项目管理Project
 
-# 源码类
-## Mybatis源码学习
+# 6. 源码类
+## 6.1. Mybatis源码学习
 https://github.com/kelvinliu11/meteor/blob/master/数据库/Mybatis源码学习
