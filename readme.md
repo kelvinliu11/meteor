@@ -184,3 +184,11 @@ https://github.com/kelvinliu11/meteor/blob/master/compare
 # 4. 工具使用
 ## 4.1. 从0开始Powerdesign类图
 https://github.com/kelvinliu11/meteor/blob/master/从0开始Powerdesign类图
+
+# 项目管理
+## 项目管理Project
+https://github.com/kelvinliu11/meteor/blob/master/项目管理Project
+
+# 源码类
+## Mybatis源码学习
+https://github.com/kelvinliu11/meteor/blob/master/数据库/Mybatis源码学习
