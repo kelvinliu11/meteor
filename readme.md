@@ -15,6 +15,7 @@
     - [3.1. 比较器](#31-比较器)
 - [4. 工具使用](#4-工具使用)
     - [4.1. 从0开始Powerdesign类图](#41-从0开始powerdesign类图)
+    - [4.2. hasor dataway的使用](#42-hasor-dataway的使用)
 - [5. 项目管理](#5-项目管理)
     - [5.1. 项目管理Project](#51-项目管理project)
 - [6. 源码类](#6-源码类)
@@ -188,6 +189,9 @@ https://github.com/kelvinliu11/meteor/blob/master/compare
 # 4. 工具使用
 ## 4.1. 从0开始Powerdesign类图
 https://github.com/kelvinliu11/meteor/blob/master/从0开始Powerdesign类图
+## 4.2. hasor dataway的使用
+一个网上的小工具，sb写的，可以通过web可视化页面写DataQL语句（类似js）来动态生成接口
+https://github.com/kelvinliu11/meteor/blob/master/dataway
 
 # 5. 项目管理
 ## 5.1. 项目管理Project
