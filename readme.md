@@ -102,14 +102,14 @@ https://github.com/kelvinliu11/meteor/blob/master/bubblesort
     * 待pLeft=middle&&pRight=right，表明merge结束，此时需要将newArray中的数据拷贝到origin中的left ~ right下标段处。
 
     
-## 2.2. 选择排序bubblesort
+## 2.2. 选择排序
 https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 选择排序  
     * 选择排序，由小到大输出：每次都是从底最后一个，跟其上面的所有数据做比较，每次比较过程中，用minIndex来记录这一轮最小数的下标，待结束后放在较小的存在0号位置。
     * 注意的就是不要没一个比较的时候直接交换，只记录下标，等到内层循环结束之后再做交换
     * 总共比较的次数是一定的：(n-1)+(n-2)+...+1 = (n-1)*n/2 = 1/2*n² - 1/2*n，那么时间复杂度为O(n²)
 
-## 2.3. 插入排序bubblesort
+## 2.3. 插入排序
 https://github.com/kelvinliu11/meteor/blob/master/bubblesort
 * 插入排序
     * 插入排序：让元素i之前的元素都保持由小到大排序，每次比较都是跟当前元素之前的所有元素进行比较。好比从牌堆里面摸牌，摸出来的牌每次都要从手上的牌从后往前理一遍。
