@@ -10,6 +10,7 @@
 - [4. 工具使用](#4-工具使用)
     - [4.1. 从0开始Powerdesign类图](#41-从0开始powerdesign类图)
     - [4.2. hasor dataway的使用](#42-hasor-dataway的使用)
+    - [4.3. Springboot+layui的管理系统](#43-springbootlayui的管理系统)
 - [5. 项目管理](#5-项目管理)
     - [5.1. 项目管理Project](#51-项目管理project)
 - [6. 源码类](#6-源码类)
@@ -73,6 +74,11 @@ https://github.com/kelvinliu11/meteor/blob/master/从0开始Powerdesign类图
 ## 4.2. hasor dataway的使用
 一个网上的小工具，sb写的，可以通过web可视化页面写DataQL语句（类似js）来动态生成接口
 https://github.com/kelvinliu11/meteor/blob/master/工具/dataway
+## 4.3. Springboot+layui的管理系统SpringbootPlus
+基于此，来做一些简单的管理系统  
+https://gitee.com/kelvin11/springboot-plus
+E:\gitlab\kelvin\springboot-layui-management
+已完成的一个case：E:\tmp\办公\设计\xiandafu-springboot-plus-master\springboot-plus(内部)
 
 # 5. 项目管理
 ## 5.1. 项目管理Project
@@ -83,6 +89,8 @@ https://github.com/kelvinliu11/meteor/blob/master/项目管理/使用Project进�
 https://github.com/kelvinliu11/meteor/blob/master/数据库/Mybatis源码学习
 ## 6.2. Spring源码学习
 https://github.com/kelvinliu11/meteor/blob/master/Spring/Spring源码/Spring源码分析.md
+E:\公司材料\0023-学习\辅助代码\SpringSourceTest(内部)
+
 
 # 7. 工具
 ## 7.1. typora+picgo+gitee写作，支持csdn
