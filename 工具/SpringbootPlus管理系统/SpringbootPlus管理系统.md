@@ -22,10 +22,18 @@
         - [3.2.1. 生成PO](#321-生成po)
         - [3.2.2. 创建Dao](#322-创建dao)
         - [3.2.3. 执行查询](#323-执行查询)
+    - [3.3. 自定义sql查询](#33-自定义sql查询)
+        - [3.3.1. 查询单表](#331-查询单表)
+        - [3.3.2. 查询返回特定POJO](#332-查询返回特定pojo)
 - [4. 生成子系统](#4-生成子系统)
     - [4.1. 生成新模块](#41-生成新模块)
     - [4.2. 导入模块module](#42-导入模块module)
     - [4.3. 在子系统中做一个查询接口](#43-在子系统中做一个查询接口)
+- [5. 生成页面+service+dao+PO](#5-生成页面servicedaopo)
+    - [5.1. 自动生成代码](#51-自动生成代码)
+    - [5.2. 新建“机器管理”功能点](#52-新建机器管理功能点)
+    - [5.3. 新建“机器管理”菜单](#53-新建机器管理菜单)
+    - [5.4. 访问“机器管理”页面](#54-访问机器管理页面)
 
 <!-- /TOC -->
 # 1. 目标
@@ -258,6 +266,88 @@ http://ibeetl.com/guide/#/beetlsql/quickstart
     }
 ```
 
+## 3.3. 自定义sql查询
+
+### 3.3.1. 查询单表
+
+```java
+List<TestMachine> machineList = testMachineDao.execute("SELECT * FROM test_machine WHERE machine_name LIKE ?", "%Dell%");
+```
+
+### 3.3.2. 查询返回特定POJO
+
+* 新建dto类，用来接收查询结果
+
+  ```java
+  public class MyMachine{
+      private String machineName;
+  
+      public String getMachineName() {
+          return machineName;
+      }
+  
+      public void setMachineName(String machineName) {
+          this.machineName = machineName;
+      }
+  
+      @Override
+      public String toString() {
+          return "MyMachine{" +
+                  "machineName='" + machineName + '\'' +
+                  '}';
+      }
+  }
+  ```
+
+* 在src/main/resource目录下，建testMachine.md文件，内容是
+
+  ```markdown
+  getTestMachineA
+  ===
+  
+  	select * from test_machine
+  	
+  ```
+
+* 在testMachineDao.java新增getMachineA()方法
+
+  ```java
+  @SqlResource("springbootplus.testMachine")
+  public interface TestMachineDao extends BaseMapper<TestMachine>{
+      public PageQuery<TestMachine> queryByCondition(PageQuery query);
+      public void batchDelTestMachineByIds( List<Long> ids);
+  
+      public List<MyMachine> getTestMachineA();
+  }
+  ```
+
+* 运行测试方法
+
+  ```java
+  @RunWith(SpringRunner.class)
+  @SpringBootTest(classes = {MainApplication.class})// 指定启动类
+  public class ApplicationTests {
+  
+      @Autowired
+      TestMachineDao machineDao;
+  
+      /**
+       * 生成PO类的代码
+       * @throws Exception
+       */
+      @Test
+      public void testSql() throws Exception {
+          List<MyMachine> getTestMachineA = machineDao.getTestMachineA();
+          System.out.println("111");
+      }
+  
+  }
+  ```
+
+* 目录结构与运行情况截图如下
+
+  ![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618144146.png)
+
 # 4. 生成子系统
 
 原则上作者不建议在admin-console或admin-core修改代码。推荐是先自动生成一个项目（其实是module），此module是依赖admin-console和admin-core的，然后导入此module
@@ -287,3 +377,39 @@ http://ibeetl.com/guide/#/beetlsql/quickstart
 无需额外的配置，可以直接使用LambdaQuery
 
 ![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200617175433.png)
+
+# 5. 生成页面+service+dao+PO
+
+## 5.1. 自动生成代码
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618090248.png)
+
+生成的路径选择在“E:\gitlab\kelvin\springboot-layui-management\springbootplus”，这个就是我新建的项目目录，这样的话，新建出来的文件会自动放在此目录下，需要注意的是自动生成的代码package，分别是dao、entity、service、web这些目录
+
+按此方式，从html&js到controller、service、dao、entity都已经生成好了
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618090919.png)
+
+## 5.2. 新建“机器管理”功能点
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618091050.png)
+
+## 5.3. 新建“机器管理”菜单
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618091225.png)
+
+## 5.4. 访问“机器管理”页面
+
+![image-20200618091302500](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20200618091302500.png)
+
+看后台报错
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618091443.png)
+
+发现是没有重启服务.....重启后即可访问....
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200618093952.png)
+
+> 有个小问题就是有些字段不需要在页面上展示，比如“增加”的时候，不需要填写“添加时间”和“更新时间”
+>
+> 目前这个还没有看到解决的方法，估计是需要手动修改，毕竟如果不配置展示，就需要在db中改为可空或插入一些默认值，这个可能需要自行实现。
