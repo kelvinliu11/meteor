@@ -22,6 +22,7 @@
         - [4.5.2. 部署service-provider](#452-部署service-provider)
         - [4.5.3. 确认vm2 docker中的service-provider是否可以注册到vm1 docker中的eureka-server](#453-确认vm2-docker中的service-provider是否可以注册到vm1-docker中的eureka-server)
         - [4.5.4. 考虑在vm1上部署一个service-consumer](#454-考虑在vm1上部署一个service-consumer)
+    - [4.6. 部署sc服务结论，swarm与overlay](#46-部署sc服务结论swarm与overlay)
 
 <!-- /TOC -->
 # 1. 需要探讨的内容
@@ -294,6 +295,8 @@ mg5zdsuqeuo9bvh4z2q2i6tpg *   localhost.localdomain   Ready               Active
 
 ## 4.5. 部署sc服务
 
+有一个系列文章写的还行，比较简洁，当比较熟练的就直接照抄：https://my.oschina.net/mdxlcj/blog/2995192
+
 ### 4.5.1. 部署eureka-server
 
 要验证eureka-server和service-provider的连通性，其实就是在idea里面的docker运行配置里，加上--network=my-network2这个运行配置加上即可，如下：
@@ -331,3 +334,98 @@ docker network inspect my-network2
 
 在vm1上部署一个service-consumer，注册中eureka-server，并调用service-provider的接口
 
+* 创建一个springboot的service-consumer工程
+
+  具体service-consumer代码上的改造，参考：https://my.oschina.net/mdxlcj/blog/3139142
+
+  ![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624093819.png)
+
+  同样构建好容器，并加入my-network2网络，通过 docker network inspect my-network2查看此网络上的容器及ip
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624102432.png)
+
+![image-20200624102454451](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20200624102454451.png)
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624103903.png)
+
+此时从10.0.1.12 ping 10.0.1.10不通，怀疑是昨天重启vm后，119机器的ip变到了223，所以重新建swarm和overlay再试一下。（剧透一下ping不同的确跟vm ip漂移有关，重建swarm和overlay网络之后就可以了）
+
+这里有个小插曲：在建立swarm集群后，新建的overlay网络可能没那么快在vm2上显示出来，就是说在vm2上执行docker network ls看不到my-network2网络，为了确定情况，可以执行下面的命令来尝试网络是否OK
+
+```
+docker service create --replicas 1 --name mytest --network my-network2 --constraint 'node.hostname == vm2' alpine ping baidu.com
+```
+
+* 把service-provider的注册中心改到docker ip，看是否可以注册上
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624105217.png)
+
+结果可以注册上，并且调用http://172.18.100.223:8076/test1也是可以看到页面输出Hello world！
+
+此时，service-provider和service-consumer注册的eureka地址都是其docker容器的内部ip，为10.0.0.5，从service-consumer调用service-provider是OK的。
+
+* 再尝试一下把service-provider和service-consumer使用eureka的虚拟机ip来注册，看是否可以，即把eureka-server的地址改到。这么做的意义是生产上可以在应用里只指定eureka的地址，其他的服务，都是通过docker ip相互调用，不需要指定确定ip
+
+```
+eureka.client.serviceUrl.defaultZone=http://172.18.100.223:8761/eureka/
+```
+
+注册没有问题的，相互调用也是OK的
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624105954.png)
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624110026.png)
+
+## 4.6. 部署sc服务结论，swarm与overlay
+
+* 各vm情况：
+
+vm1:  171.18.100.223。其上docker：eureka-server(10.0.0.5),eureka-consumer(10.0.0.10)
+
+vm2：172.18.100.66。其上docker：service-provider(10.0.0.9)
+
+* sc配置：
+
+eureka-server不需要配置ip
+
+service-provider的注册中心，可以是vm1的171.18.100.223，也可以是docker的10.0.0.5
+
+service-consumer的注册中心，可以是vm1的171.18.100.223，也可以是docker的10.0.0.5
+
+访问service-consumer，http://172.18.100.223:8076/test1，都可以拿到结果
+
+* 创建swarm集群命令
+
+  docker swarm init --advertise-addr 172.18.100.223
+
+  172.18.100.223是vm的ip，要注意修改，然后获取类似下面的命令，在swarm work节点上去执行
+
+  docker swarm join --token SWMTKN-1-51p9uylvwzfzwt7qqu9e1mlcfyt60py8icg1tvoqtm5pz6f0nh-e1lkiunldyrt7o0eany0sa4yx 172.18.100.223:2377
+
+* 创建overlay网络
+
+  docker network create -d overlay --attachable my-network2
+
+  --attachable比较重要，不然容器可能加入不了网络
+
+  在manager节点创建overlay网络后，可能没有那么快同步到work节点上，就是说在work节点上执行docker network ls看不到my-network2，可以通过执行下面的命令，再次确认网络是否建好了
+
+  ```shell
+  docker service create --replicas 1 --name mytest --network my-network2 --constraint 'node.hostname == vm2' alpine ping baidu.com
+  ```
+
+* 避坑命令，最好在vm上都执行一遍
+
+  ```shell
+  firewall-cmd --zone=public --add-port=7946/tcp --permanent
+  firewall-cmd --zone=public --add-port=7946/udp --permanent
+  firewall-cmd --zone=public --add-port=4789/udp --permanent
+  firewall-cmd --zone=public --add-port=4789/tcp --permanent
+  firewall-cmd --zone=public --add-port=2375/tcp --permanent
+  firewall-cmd --zone=public --add-port=2375/udp --permanent
+  firewall-cmd --zone=public --add-port=2377/udp --permanent
+  firewall-cmd --zone=public --add-port=2377/tcp --permanent
+  firewall-cmd --reload
+  ```
+
+  
