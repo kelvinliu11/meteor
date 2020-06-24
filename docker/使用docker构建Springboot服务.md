@@ -188,7 +188,7 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 直接运行就是了，可以看到开始构建了（上一步配置docker的时候，server选到“Docker129”，代表目标容器要在129上）
 
-![image-20200623160807403](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20200623160807403.png)
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624112914.png)
 
 去129上看一下，docker ps
 
@@ -328,7 +328,7 @@ docker network inspect my-network2
 
 ### 4.5.3. 确认vm2 docker中的service-provider是否可以注册到vm1 docker中的eureka-server
 
-![image-20200623165619967](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20200623165619967.png)
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624112956.png)
 
 ### 4.5.4. 考虑在vm1上部署一个service-consumer
 
@@ -344,7 +344,7 @@ docker network inspect my-network2
 
 ![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624102432.png)
 
-![image-20200624102454451](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20200624102454451.png)
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624113037.png)
 
 ![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200624103903.png)
 
