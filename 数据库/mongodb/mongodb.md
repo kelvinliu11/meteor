@@ -224,15 +224,61 @@ show users
 
 # 5. Springboot项目访问mongo数据
 
-# 6. 自动生成查询mongo数据的代码
+
+
+# 6. 自动生成查询mongo数据查询的代码
+
+在nosqlbooster中，选中并执行查询语句后，点击Code按钮，可以生成对应的代码，如下图。
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716134619.png)
 
 # 7. mysql -> mongo (kettle)制作宽表
 
-2张mysql表   -> 1张mongo的collection
+目标：2张mysql表，mysql2mongo表包含user、age、del_flag字段，mysql2mongosalary表包含user、salary、del_flag字段。将这两张表的数据通过kettle同步到1张mongo的runoob集合，要求是相同的user数据放在一行。
+
+开始配置mysql2mongo表到runoob集合的kettle：
+
+* mysql表输入
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716140408.png)
+
+* mongo输出
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716140513.png)
+
+解释一下这个，host和port自不用说，用户名和密码需要设置，之前在测语法的时候连接没有用密码，这里需要用，不然会报错，参考一下“创建db用户和密码”这个语句即可。
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716140710.png)
+
+上图，这两个√很重要，“Update”是说update if record exists, otherwise igonre，就是字面意思，匹配不到的就忽略。“Modifier update”看看英文，解释就是，如果不勾选的话，那么我们在同步user、age这个表的数据的时候，会把mongo中runoob集合里的对应user的document的其他字段都置空，比如原先runoob里面已经有user、salary了，不勾选，就会把salary字段置空。
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716141020.png)这个很有意思的，先点击“Get fields”的时候，只有1能出来，当然会有id和del_flag字段，我们不需要就删了；标号2那边的是没有的，不用管，先点击“确定”，再打开之后就有默认的数据了，然后根据上图所示配置，关键的是哪个“Match field for update”，Y意思就是根据此字段做匹配。这个示例意思就是根据user匹配，将age字段更新到runoob中。
+
+* 结果
+
+mysql表mysql2mongo
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716141612.png)
+
+mysql表mysql2mongosalary
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716141651.png)
+
+mongodb的集合
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716141343.png)
 
 # 8. mongo -> mysql (kettle)导出数据
 
+这个是简单的做了一下，目前还没有看到对应的场景，先体验一下功能
 
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716142301.png)
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716142314.png)
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716142330.png)
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200716142358.png)
 
 # 9. 待完成
 
