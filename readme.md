@@ -20,6 +20,8 @@
     - [7.1. typora+picgo+gitee写作，支持csdn](#71-typorapicgogitee写作支持csdn)
 - [8. docker](#8-docker)
     - [8.1. 使用idea快速构建容器](#81-使用idea快速构建容器)
+- [9. 数据库](#9-数据库)
+    - [9.1. mongodb入门（kettle+mysql+mongo同步）](#91-mongodb入门kettlemysqlmongo同步)
 
 <!-- /TOC -->
 
@@ -101,3 +103,7 @@ https://github.com/kelvinliu11/meteor/blob/master/工具/typora+picgo+gitee
 # 8. docker
 ## 8.1. 使用idea快速构建容器
 https://github.com/kelvinliu11/meteor/blob/master/docker/使用docker构建Springboot服务.md
+
+# 9. 数据库
+## 9.1. mongodb入门（kettle+mysql+mongo同步）
+https://github.com/kelvinliu11/meteor/blob/master/数据库/mongodb/mongodb.md
