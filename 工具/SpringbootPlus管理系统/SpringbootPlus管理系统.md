@@ -40,7 +40,7 @@
 
 是为了使用一个“工具”来完成CURD的绝大部分工作，提供一个可以快速完成功能的小系统。
 
-以下是一个开源框架，Springboot+layui，已经包含组织、用户、菜单、权限、自动生成代码等功能。（fork的）
+以下是一个开源框架，Springboot+layui，已经包含组织、用户、菜单、权限、自动生成代码等功能。（fork的，也有部分功能的测试）
 https://gitee.com/kelvin11/springboot-plus
 E:\gitlab\kelvin\springboot-layui-management
 已完成的一个case：E:\tmp\办公\设计\xiandafu-springboot-plus-master\springboot-plus(内部MQTT)
