@@ -411,8 +411,21 @@ service-consumer的注册中心，可以是vm1的171.18.100.223，也可以是do
   在manager节点创建overlay网络后，可能没有那么快同步到work节点上，就是说在work节点上执行docker network ls看不到my-network2，可以通过执行下面的命令，再次确认网络是否建好了
 
   ```shell
+  测试的命令如下（在manager节点，要求worker节点vm2上创建一个alpine容器，attach到my-network2网络）：
   docker service create --replicas 1 --name mytest --network my-network2 --constraint 'node.hostname == vm2' alpine ping baidu.com
   ```
+
+  为了便于测试，也可以创建两个busybox，然后从容器相互ping，看是否可以通
+
+  ```shell
+  先分别在2个vm上创建busybox
+  docker run -itd --name=busybox1 --network=my-network2 busybox /bin/sh
+  docker run -itd --name=busybox2 --network=my-network2 busybox /bin/sh
+  然后分别在机器上执行docker network inspect my-network2，查看busybox的docker ip，然后从一台vm上执行ping命令（容器id是本vmbusybox的名称，ip是另一个vm上busybox的docker ip）
+  docker exec -it f61e784f5ddb ping 10.0.0.4
+  ```
+
+  
 
 * 避坑命令，最好在vm上都执行一遍
 
