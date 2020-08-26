@@ -11,6 +11,13 @@
     - [2.3. XmlBeanFactory](#23-xmlbeanfactory)
 
 <!-- /TOC -->
+
+# 概念
+
+## Spring的整体架构
+
+![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200628165030.png)
+
 # 1. 工具
 
 ## 1.1. idea中查看一个Class类的Diagram：
@@ -51,4 +58,4 @@
 
 ![](https://gitee.com/kelvin11/cloudimg/raw/master/img/20200609172559.png)
 
-------> 2.5
+------>  《Spring源码深度解析》P51 默认标签的解析
